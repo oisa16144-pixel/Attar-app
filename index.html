@@ -29,7 +29,7 @@ h2{font-size:17px;margin:0 0 10px}
 input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid var(--key);background:var(--bg);color:var(--fg);margin-bottom:6px}
 .btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:12px;padding:13px;font-size:17px;font-weight:700;background:var(--ac);color:var(--acf);cursor:pointer;margin-top:10px}
 .fb{background:#1877f2;color:#fff}
-.hide{display:none}
+.hide{display:none}.cb{display:flex;gap:8px;margin-top:6px}.cb a{flex:1;text-align:center;text-decoration:none;padding:11px 6px;border-radius:10px;font-weight:700;font-size:15px}.call{background:var(--ac);color:var(--acf)}.wa{background:#25d366;color:#fff}.mp{background:var(--key);color:var(--fg)}
 #st{text-align:center;padding:8px;border-radius:10px;font-size:13px;margin-top:8px}
 .warn{background:var(--key);color:var(--mut)}
 </style>
@@ -41,6 +41,7 @@ input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid
 <button class="btn hide" id="ib">⬇️ ثبّت التطبيق على جوالك</button>
 <div id="of"></div>
 <div class="card"><h2>قائمة الأسعار (للكيلو)</h2><input id="q" placeholder="🔍 ابحث عن صنف"><div id="ls"></div></div>
+<div class="card hide" id="ct"></div>
 <a class="btn fb hide" id="fb" target="_blank" rel="noopener">👍 تابعنا على فيسبوك</a>
 <button class="btn" id="rf" style="background:var(--key);color:var(--fg)">🔄 تحديث الأسعار</button>
 </main>
@@ -67,6 +68,13 @@ function render(){
   const q=$('q').value.trim(),it=D.items.filter(x=>!q||String(x.n).includes(q));
   $('ls').innerHTML=it.map((x,i)=>'<div class="row'+(i?'':' f')+'"><div><b>'+esc(x.n)+'</b><div class="mut">½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10)+'</div></div><div class="p">'+fp(x.p)+c+'</div></div>').join('')||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
   const f=$('fb');if(okUrl(D.fb||'')){f.href=D.fb;f.classList.remove('hide')}else f.classList.add('hide');
+  const ph=(D.phones||[]).filter(Boolean),mpOk=/^https:\/\/(maps\.app\.goo\.gl|goo\.gl\/maps|www\.google\.[a-z.]+\/maps|maps\.google\.[a-z.]+|google\.[a-z.]+\/maps)/i.test(D.map||'');
+  let h='';
+  if(D.addr)h+='<div style="margin-bottom:8px">📍 '+esc(D.addr)+'</div>';
+  if(mpOk)h+='<div class="cb"><a class="mp" href="'+esc(D.map)+'" target="_blank" rel="noopener">🗺️ افتح موقع المحل على الخريطة</a></div>';
+  ph.forEach(p=>{const n=String(p).replace(/[^\d+]/g,'');if(n.length<5)return;const wa=n.startsWith('+')?n.slice(1):n.startsWith('00')?n.slice(2):'';
+    h+='<div style="margin-top:12px"><b dir="ltr" style="display:block;text-align:right">'+esc(p)+'</b><div class="cb"><a class="call" href="tel:'+n+'">📞 اتصال</a>'+(wa?'<a class="wa" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">💬 واتساب</a>':'')+'</div></div>'});
+  const ct=$('ct');ct.innerHTML=h?'<h2>📍 تواصل معنا</h2>'+h:'';ct.classList.toggle('hide',!h);
 }
 $('q').oninput=render;
 $('rf').onclick=load;
