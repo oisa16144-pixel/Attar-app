@@ -52,7 +52,7 @@ main.pb{padding-bottom:90px}
 <div id="st" class="hide warn"></div>
 <button class="btn hide" id="ib">⬇️ ثبّت التطبيق على جوالك</button>
 <div id="of"></div>
-<div class="card"><h2>قائمة الأسعار (للكيلو)</h2><input id="q" placeholder="🔍 ابحث عن صنف"><div id="cats" class="chips"></div><div id="ls"></div></div>
+<div class="card"><h2>قائمة الأسعار</h2><input id="q" placeholder="🔍 ابحث عن صنف"><div id="cats" class="chips"></div><div id="ls"></div></div>
 <div class="card hide" id="ct"></div>
 <a class="btn fb hide" id="fb" target="_blank" rel="noopener">👍 تابعنا على فيسبوك</a>
 <button class="btn" id="rf" style="background:var(--key);color:var(--fg)">🔄 تحديث الأسعار</button>
@@ -72,6 +72,7 @@ const okUrl=u=>/^https:\/\/([a-z0-9-]+\.)*(facebook\.com|fb\.com)\//i.test(u)||/
 let D=null,off=false,cat='',cart={};
 try{cart=JSON.parse(localStorage.getItem('cart'))||{}}catch(e){cart={}}
 const saveCart=()=>{try{localStorage.setItem('cart',JSON.stringify(cart))}catch(e){}};
+const qx=(x,q)=>x.u?q+' عبوة':ql(q);
 const ql=q=>q<1?Math.round(q*1000)+' جم':fp(q)+' كجم';
 const cur=()=>D&&D.cur?D.cur:'';
 function cl(){return Object.keys(cart).map(n=>({x:D.items.find(i=>i.n===n),q:cart[n]})).filter(e=>e.x&&!e.x.o&&e.q>0)}
@@ -82,7 +83,7 @@ function drawCart(){
   $('cbar').classList.toggle('hide',!l.length);$('cbtn').textContent='🛒 عرض السلة ('+l.length+') • '+fp(t)+' '+cur();
   document.querySelector('main').classList.toggle('pb',!!l.length);
   if(!l.length)$('sh').classList.add('hide');
-  $('sr').innerHTML=l.map((e,i)=>{const k='data-n="'+esc(e.x.n)+'"';return '<div class="row'+(i?'':' f')+'"><div><b>'+esc(e.x.n)+'</b><div class="mut">'+fp(e.x.p*e.q)+' '+esc(cur())+'</div></div><div class="qc"><button data-a="-" '+k+'>−</button><span>'+ql(e.q)+'</span><button data-a="+" '+k+'>＋</button></div></div>'}).join('');
+  $('sr').innerHTML=l.map((e,i)=>{const k='data-n="'+esc(e.x.n)+'"';return '<div class="row'+(i?'':' f')+'"><div><b>'+esc(e.x.n)+'</b><div class="mut">'+fp(e.x.p*e.q)+' '+esc(cur())+'</div></div><div class="qc"><button data-a="-" '+k+'>−</button><span>'+qx(e.x,e.q)+'</span><button data-a="+" '+k+'>＋</button></div></div>'}).join('');
   $('tt').textContent=fp(t)+' '+cur();
   const w=waNum();$('send').classList.toggle('hide',!w);$('wn').classList.toggle('hide',!!w);
 }
@@ -106,8 +107,8 @@ function render(){
   $('cats').innerHTML=cs.length?['',...cs].map(c=>'<button class="chip'+(c===cat?' on':'')+'" data-c="'+esc(c)+'">'+(c?esc(c):'الكل')+'</button>').join(''):'';
   const it=D.items.filter(x=>(!q||String(x.n).includes(q))&&(!cat||x.c===cat)).sort((a,b)=>(a.o?1:0)-(b.o?1:0));
   $('ls').innerHTML=it.map((x,i)=>{const n=cart[x.n]||0,k='data-n="'+esc(x.n)+'"';
-    const ctl=x.o?'':n?'<div class="qc"><button data-a="-" '+k+'>−</button><span>'+ql(n)+'</span><button data-a="+" '+k+'>＋</button></div>':'<button class="add" data-a="+" '+k+'>＋ أضف</button>';
-    return '<div class="row'+(i?'':' f')+(x.o?' o':'')+'"><div><b>'+esc(x.n)+'</b>'+(x.o?'<span class="oos">نفد</span>':'')+'<div class="mut">½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10)+'</div></div><div class="rt"><div class="p">'+fp(x.p)+c+'</div>'+ctl+'</div></div>'}).join('')||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
+    const ctl=x.o?'':n?'<div class="qc"><button data-a="-" '+k+'>−</button><span>'+qx(x,n)+'</span><button data-a="+" '+k+'>＋</button></div>':'<button class="add" data-a="+" '+k+'>＋ أضف</button>';
+    return '<div class="row'+(i?'':' f')+(x.o?' o':'')+'"><div><b>'+esc(x.n)+'</b>'+(x.o?'<span class="oos">نفد</span>':'')+(x.u?'<div class="mut">السعر للعبوة الواحدة</div>':'<div class="mut">½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10)+'</div>')+'</div><div class="rt"><div class="p">'+fp(x.p)+c+'</div>'+ctl+'</div></div>'}).join('')||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
   const f=$('fb');if(okUrl(D.fb||'')){f.href=D.fb;f.classList.remove('hide')}else f.classList.add('hide');
   const ph=(D.phones||[]).filter(Boolean),mpOk=/^https:\/\/(maps\.app\.goo\.gl|goo\.gl\/maps|www\.google\.[a-z.]+\/maps|maps\.google\.[a-z.]+|google\.[a-z.]+\/maps)/i.test(D.map||'');
   let h='';
@@ -120,7 +121,7 @@ function render(){
 }
 $('q').oninput=render;
 document.addEventListener('click',e=>{
-  const b=e.target.closest('[data-a]');if(b){chg(b.dataset.n,b.dataset.a==='+'?0.25:-0.25);return}
+  const b=e.target.closest('[data-a]');if(b){const it=D.items.find(i=>i.n===b.dataset.n),st=it&&it.u?1:0.25;chg(b.dataset.n,b.dataset.a==='+'?st:-st);return}
   const c=e.target.closest('[data-c]');if(c){cat=c.dataset.c;render()}
 });
 $('cbtn').onclick=()=>$('sh').classList.remove('hide');
@@ -130,7 +131,7 @@ $('clr').onclick=()=>{cart={};saveCart();render()};
 $('send').onclick=()=>{
   const l=cl(),w=waNum();if(!l.length||!w)return;
   const t=l.reduce((a,e)=>a+e.x.p*e.q,0),cu=cur()?' '+cur():'',nm=$('cn').value.trim(),nt=$('cm').value.trim();
-  const msg='السلام عليكم، أريد طلب:\n'+l.map(e=>'• '+e.x.n+' — '+ql(e.q)+' — '+fp(e.x.p*e.q)+cu).join('\n')+'\nالإجمالي التقريبي: '+fp(t)+cu+(nm?'\nالاسم: '+nm:'')+(nt?'\nملاحظة: '+nt:'');
+  const msg='السلام عليكم، أريد طلب:\n'+l.map(e=>'• '+e.x.n+' — '+qx(e.x,e.q)+' — '+fp(e.x.p*e.q)+cu).join('\n')+'\nالإجمالي التقريبي: '+fp(t)+cu+(nm?'\nالاسم: '+nm:'')+(nt?'\nملاحظة: '+nt:'');
   window.open('https://wa.me/'+w+'?text='+encodeURIComponent(msg),'_blank');
 };
 $('rf').onclick=load;
