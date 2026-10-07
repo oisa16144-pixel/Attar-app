@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>أسعار عيسى العطار</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#14663d">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<style>
+:root{--bg:#f3f6ef;--card:#fff;--fg:#1d2a20;--mut:#5e6e62;--ac:#14663d;--acf:#fff;--gold:#b9812a;--key:#e4ece0;--hot:#b3361f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a12;--card:#16261b;--fg:#f0ebdc;--mut:#a9b8aa;--ac:#d9a441;--acf:#1b1405;--gold:#d9a441;--key:#223829;--hot:#ff8a73}}
+:root[data-theme="dark"]{--bg:#0d1a12;--card:#16261b;--fg:#f0ebdc;--mut:#a9b8aa;--ac:#d9a441;--acf:#1b1405;--gold:#d9a441;--key:#223829;--hot:#ff8a73}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
+main{max-width:480px;margin:0 auto;padding:16px}
+.hd{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.hd img{width:60px;height:60px;border-radius:16px}
+h1{font-size:23px;margin:0}
+.mut{color:var(--mut);font-size:13px}
+.card{background:var(--card);border-radius:18px;padding:14px;margin:12px 0}
+h2{font-size:17px;margin:0 0 10px}
+.offer{border-right:4px solid var(--hot);background:var(--key);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.offer b{display:block;color:var(--hot)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--key)}
+.row.f{border-top:0}
+.p{font-size:21px;font-weight:700;color:var(--ac);white-space:nowrap}
+input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid var(--key);background:var(--bg);color:var(--fg);margin-bottom:6px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:12px;padding:13px;font-size:17px;font-weight:700;background:var(--ac);color:var(--acf);cursor:pointer;margin-top:10px}
+.fb{background:#1877f2;color:#fff}
+.hide{display:none}
+#st{text-align:center;padding:8px;border-radius:10px;font-size:13px;margin-top:8px}
+.warn{background:var(--key);color:var(--mut)}
+</style>
+</head>
+<body>
+<main>
+<div class="hd"><img src="icon-192.png" alt=""><div><h1 id="nm">عيسى العطار</h1><div class="mut" id="up">جارٍ التحميل...</div></div></div>
+<div id="st" class="hide warn"></div>
+<button class="btn hide" id="ib">⬇️ ثبّت التطبيق على جوالك</button>
+<div id="of"></div>
+<div class="card"><h2>قائمة الأسعار (للكيلو)</h2><input id="q" placeholder="🔍 ابحث عن صنف"><div id="ls"></div></div>
+<a class="btn fb hide" id="fb" target="_blank" rel="noopener">👍 تابعنا على فيسبوك</a>
+<button class="btn" id="rf" style="background:var(--key);color:var(--fg)">🔄 تحديث الأسعار</button>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fp=n=>(+n).toFixed(2).replace(/\.00$/,'').replace(/(\.\d)0$/,'$1');
+const okUrl=u=>/^https:\/\/([a-z0-9-]+\.)*(facebook\.com|fb\.com)\//i.test(u)||/^https:\/\/fb\.me\//i.test(u);
+let D=null,off=false;
+async function load(){
+  try{const r=await fetch('prices.json',{cache:'no-store'});if(!r.ok)throw 0;D=await r.json();off=false;try{localStorage.setItem('d',JSON.stringify(D))}catch(e){}}
+  catch(e){try{D=JSON.parse(localStorage.getItem('d'))}catch(x){D=null}off=true}
+  render();
+}
+function render(){
+  const st=$('st');
+  if(!D||!Array.isArray(D.items)){$('up').textContent='';st.className='warn';st.id='st';st.textContent='تعذّر تحميل الأسعار، تأكد من اتصالك بالإنترنت ثم اضغط تحديث.';$('ls').innerHTML='';return}
+  $('nm').textContent=D.name||'عيسى العطار';document.title='أسعار '+(D.name||'');
+  const c=D.cur?' '+esc(D.cur):'';
+  $('up').textContent=D.updated?'آخر تحديث: '+new Date(D.updated).toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'}):'';
+  st.className=off?'warn':'hide';st.textContent=off?'⚠️ أنت غير متصل بالإنترنت، هذه آخر أسعار محفوظة وقد تكون قديمة.':'';
+  const of=(D.offers||[]);
+  $('of').innerHTML=of.length?'<div class="card"><h2>🔥 العروض</h2>'+of.map(o=>'<div class="offer"><b>'+esc(o.t||'')+'</b>'+esc(o.d||'')+'</div>').join('')+'</div>':'';
+  const q=$('q').value.trim(),it=D.items.filter(x=>!q||String(x.n).includes(q));
+  $('ls').innerHTML=it.map((x,i)=>'<div class="row'+(i?'':' f')+'"><div><b>'+esc(x.n)+'</b><div class="mut">½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10)+'</div></div><div class="p">'+fp(x.p)+c+'</div></div>').join('')||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
+  const f=$('fb');if(okUrl(D.fb||'')){f.href=D.fb;f.classList.remove('hide')}else f.classList.add('hide');
+}
+$('q').oninput=render;
+$('rf').onclick=load;
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
+let dp=null;
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('ib').classList.remove('hide')});
+$('ib').onclick=async()=>{if(dp){dp.prompt();dp=null;$('ib').classList.add('hide')}};
+addEventListener('appinstalled',()=>$('ib').classList.add('hide'));
+if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+load();
+</script>
+</body>
+</html>
