@@ -3,263 +3,187 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>عيسى العطار</title>
+<title>أسعار عيسى العطار</title>
 <link rel="manifest" href="manifest.json">
 <meta name="theme-color" content="#14663d">
 <link rel="icon" href="icon-192.png">
 <link rel="apple-touch-icon" href="icon-192.png">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <style>
-:root{--bg:#f6f1e7;--card:#fffdf8;--fg:#2b2218;--mut:#7a6a55;--ac:#14663d;--acf:#fff;--key:#ece3d2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17120c;--card:#241c12;--fg:#f3e9d8;--mut:#b4a285;--ac:#d9a050;--acf:#1d1507;--key:#33281a}}
-:root[data-theme="dark"]{--bg:#17120c;--card:#241c12;--fg:#f3e9d8;--mut:#b4a285;--ac:#d9a050;--acf:#1d1507;--key:#33281a}
+:root{--bg:#f3f6ef;--card:#fff;--fg:#1d2a20;--mut:#5e6e62;--ac:#14663d;--acf:#fff;--key:#e4ece0;--hot:#b3361f;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d1a12;--card:#16261b;--fg:#f0ebdc;--mut:#a9b8aa;--ac:#d9a441;--acf:#1b1405;--key:#223829;--hot:#ff8a73}}
+:root[data-theme="dark"]{--bg:#0d1a12;--card:#16261b;--fg:#f0ebdc;--mut:#a9b8aa;--ac:#d9a441;--acf:#1b1405;--key:#223829;--hot:#ff8a73}
 *{box-sizing:border-box}
 html,body{margin:0;min-height:100%;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif}
-main{max-width:480px;margin:0 auto;padding:16px}
-h1{font-size:22px;margin:4px 0 14px}
-.tabs{display:grid;grid-template-columns:repeat(5,1fr);gap:4px;background:var(--card);padding:5px;border-radius:14px;margin-bottom:14px}
-.tabs button{border:0;background:none;color:var(--mut);padding:10px 1px;border-radius:10px;font-size:13px;font-weight:600;cursor:pointer}
-.tabs button.on{background:var(--ac);color:var(--acf)}
-.card{background:var(--card);border-radius:18px;padding:16px;margin-bottom:12px}
-.hide{display:none}
-label{display:block;color:var(--mut);font-size:14px;margin:12px 0 6px}
-input,select,textarea{width:100%;padding:12px;font-size:18px;border-radius:12px;border:1px solid var(--key);background:var(--bg);color:var(--fg)}
-.chips{display:flex;gap:6px;flex-wrap:wrap}
-.chips button,.btn{flex:1;padding:10px 6px;border-radius:10px;border:0;background:var(--key);color:var(--fg);font-size:16px;cursor:pointer}
-.chips button.on,.btn.p{background:var(--ac);color:var(--acf);font-weight:700}
-.btn{width:100%;margin-top:10px;padding:13px}
-.res{margin-top:14px;border-top:1px solid var(--key);padding-top:10px}
-.res div{display:flex;justify-content:space-between;align-items:center;padding:6px 0;font-size:17px;gap:8px}
-.big{font-size:22px!important;font-weight:700;color:var(--ac)}
-.x{flex:0 0 auto;border:0;background:var(--key);color:var(--fg);border-radius:8px;width:32px;height:32px;cursor:pointer}
-.pr{display:grid;grid-template-columns:1fr 90px 36px;gap:6px;margin-bottom:8px}
-.pr input{font-size:16px;padding:10px}
-#disp{direction:ltr;text-align:left;font-size:40px;min-height:56px;overflow-x:auto;white-space:nowrap;padding:6px 4px 12px}
-#sub{direction:ltr;text-align:left;color:var(--mut);min-height:20px;padding:0 4px}
-.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;direction:ltr}
-.grid button{border:0;border-radius:14px;padding:16px 0;font-size:22px;background:var(--key);color:var(--fg);cursor:pointer}
-.grid .op{background:var(--ac);color:var(--acf)}
+main{max-width:480px;margin:0 auto;padding:16px 16px 100px}
+.hd{display:flex;align-items:center;gap:12px;margin-bottom:6px}
+.hd img{width:60px;height:60px;border-radius:16px}
+h1{font-size:23px;margin:0}
+.mut{color:var(--mut);font-size:13px}
+.card{background:var(--card);border-radius:18px;padding:14px;margin:12px 0}
+h2{font-size:17px;margin:0 0 10px}
+h3{font-size:14px;color:var(--mut);margin:14px 0 2px}
+.offer{border-right:4px solid var(--hot);background:var(--key);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+.offer b{display:block;color:var(--hot)}
+.row{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:10px 0;border-top:1px solid var(--key)}
+.grp .row:first-of-type{border-top:0}
+.row.off{opacity:.55}
+.p{font-size:20px;font-weight:700;color:var(--ac);white-space:nowrap}
+.tag{display:inline-block;background:var(--hot);color:#fff;font-size:11px;padding:1px 8px;border-radius:8px;margin-right:6px}
+input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid var(--key);background:var(--bg);color:var(--fg);margin-bottom:6px}
+.btn{display:block;width:100%;text-align:center;text-decoration:none;border:0;border-radius:12px;padding:13px;font-size:17px;font-weight:700;background:var(--ac);color:var(--acf);cursor:pointer;margin-top:10px}
+.btn.s{background:var(--key);color:var(--fg);font-weight:600}
+.fb{background:#1877f2;color:#fff}
+.x{flex:0 0 auto;border:0;border-radius:10px;background:var(--key);color:var(--fg);cursor:pointer;min-width:36px;height:36px;font-size:16px}
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:8px 0}
+.chips button{flex:1 1 auto;padding:9px 10px;border-radius:10px;border:0;background:var(--key);color:var(--fg);font-size:15px;cursor:pointer;white-space:nowrap}
+.chips button.on{background:var(--ac);color:var(--acf);font-weight:700}
+.pk{background:var(--key);border-radius:12px;padding:8px 10px;margin:0 0 6px}
+.cb{display:flex;gap:8px;margin-top:6px}
+.cb a{flex:1;text-align:center;text-decoration:none;padding:11px 6px;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer}
+.call{background:var(--ac);color:var(--acf)}.wa{background:#25d366;color:#fff}.mp{background:var(--key);color:var(--fg)}
+#st{text-align:center;padding:8px;border-radius:10px;font-size:13px;margin-top:8px;background:var(--key);color:var(--mut)}
+.bar{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);max-width:456px;margin:0 auto;z-index:5}
+.panel{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 76px);max-width:456px;margin:0 auto;max-height:68vh;overflow:auto;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:6}
+#ts{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:var(--ac);color:var(--acf);padding:10px 16px;border-radius:12px;font-weight:700;z-index:9;white-space:nowrap}
+.th{width:56px;height:56px;object-fit:cover;border-radius:10px;flex:0 0 auto}.hide{display:none}
 </style>
 </head>
 <body>
 <main>
-<h1 id="title">🌿 عيسى العطار</h1>
-<div class="tabs">
-  <button class="on" data-t="sell">البيع</button>
-  <button data-t="list">الأسعار</button>
-  <button data-t="rep">التقرير</button>
-  <button data-t="calc">الحاسبة</button>
-  <button data-t="inst">تثبيت</button>
-</div>
-
-<section id="sell">
-  <div class="card">
-    <label>الصنف</label><select id="sp"></select>
-    <label>طريقة الحساب</label>
-    <div class="chips" id="mode"><button class="on" data-m="g">بالجرام</button><button data-m="m">بالمبلغ</button></div>
-    <label id="vl">الكمية (جرام)</label><input id="sv" type="number" inputmode="decimal" placeholder="0">
-    <div class="chips" id="qk" style="margin-top:8px"></div>
-    <div class="res">
-      <div><span id="rkl">سعر الكيلو</span><b id="rk">0</b></div>
-      <div class="big"><span id="rl">السعر</span><b id="rv">0</b></div>
-    </div>
-    <button class="btn p" id="add">➕ أضف للفاتورة</button>
-  </div>
-  <div class="card">
-    <b>الفاتورة</b>
-    <div class="res" id="inv"></div>
-    <button class="btn" id="share">📤 مشاركة / نسخ الفاتورة</button>
-    <button class="btn p" id="done">✅ إتمام البيع وفاتورة جديدة</button>
-    <button class="btn" id="clr">🧹 مسح بدون حفظ</button>
-  </div>
-</section>
-
-<section id="list" class="hide">
-  <div class="card">
-    <b>الأصناف والأسعار</b>
-    <p style="color:var(--mut);font-size:13px;margin:6px 0 12px">الأسعار الحالية أمثلة، عدّلها بأسعارك. تُحفظ تلقائياً على هذا الجوال.</p>
-    <div id="pl"></div>
-    <button class="btn p" id="np">➕ صنف جديد</button>
-  </div>
-  <div class="card">
-    <label style="margin-top:0">اسم المحل</label><input id="sn">
-    <label>العملة (اختياري)</label><input id="sc" placeholder="مثال: ريال">
-  </div>
-  <div class="card">
-    <b>📣 للزبائن</b>
-    <label>رابط صفحة الفيس بوك</label><input id="fb" dir="ltr" placeholder="https://www.facebook.com/صفحتك">
-    <label>رقم واتساب لاستقبال طلبات الزبائن (+966...)</label><input id="wa" dir="ltr" placeholder="+966500000000">
-    <label>رابط موقع المحل (خرائط جوجل)</label><input id="mp" dir="ltr" placeholder="https://maps.app.goo.gl/...">
-    <label>العنوان (اختياري)</label><input id="ad" placeholder="مثال: الحي الفلاني، بجانب...">
-    <label>أرقام الهاتف (رقم في كل سطر، ويُفضّل بصيغة +966...)</label><textarea id="ph" rows="3" dir="ltr" placeholder="+966500000000"></textarea>
-    <label>العروض</label><div id="ol"></div>
-    <button class="btn" id="no">➕ عرض جديد</button>
-    <button class="btn p" id="ex">📋 نسخ بيانات الزبائن</button>
-    <button class="btn" id="dl">💾 حفظ كملف prices.json</button>
-    <button class="btn" id="di">🖼 حفظ ملف الصور (images.json)</button>
-    <div id="exm" style="color:var(--mut);font-size:13px;margin-top:8px;line-height:1.7"></div>
-  </div>
-  <div class="card">
-    <b>💾 النسخة الاحتياطية</b>
-    <p style="color:var(--mut);font-size:13px;margin:6px 0 0;line-height:1.7">احفظ نسخة من أصنافك وأسعارك وعروضك وسجل مبيعاتك، واسترجعها إن غيّرت الجوال.</p>
-    <button class="btn" id="bk">💾 حفظ نسخة احتياطية</button>
-    <button class="btn" id="rs">📂 استرجاع من نسخة</button>
-    <input type="file" id="imf" accept="image/*" class="hide">
-    <input type="file" id="rfl" accept=".json,application/json" class="hide">
-    <div id="bm" style="color:var(--mut);font-size:13px;margin-top:8px"></div>
-  </div>
-</section>
-
-<section id="rep" class="hide">
-  <div class="card">
-    <label style="margin-top:0">اليوم</label><input id="rd" type="date">
-    <div class="res" id="rr"></div>
-    <button class="btn p" id="rc">📋 نسخ التقرير</button>
-    <button class="btn" id="rx">🗑 مسح سجل المبيعات كله</button>
-  </div>
-</section>
-
-<section id="calc" class="card hide">
-  <div id="sub"></div><div id="disp">0</div>
-  <div class="grid" id="keys"></div>
-</section>
-
-<section id="inst" class="card hide">
-  <b>📲 تثبيت التطبيق</b>
-  <p id="is" style="color:var(--mut);line-height:1.8">يعمل التطبيق بدون إنترنت بعد فتحه مرة واحدة. ثبّته ليظهر على شاشة جوالك كأي تطبيق.</p>
-  <button class="btn p hide" id="ib">⬇️ تثبيت الآن</button>
-  <p style="color:var(--mut);line-height:1.8;font-size:14px">إن لم يظهر زر التثبيت: افتح قائمة المتصفح ⋮ ثم اختر «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».</p>
-</section>
+<div class="hd"><img src="icon-192.png" alt=""><div><h1 id="nm">عيسى العطار</h1><div class="mut" id="up">جارٍ التحميل...</div></div></div>
+<div id="st" class="hide"></div>
+<button class="btn hide" id="ib">⬇️ ثبّت التطبيق على جوالك</button>
+<a class="btn s hide" id="apk" href="attar.apk" download>📥 تحميل نسخة أندرويد (APK)</a>
+<div class="card hide" id="hint" style="line-height:1.9;font-size:15px"></div>
+<div id="of"></div>
+<div class="card"><h2>قائمة الأسعار (للكيلو)</h2><input id="q" placeholder="🔍 ابحث عن صنف"><div class="chips hide" id="cc"></div><div id="ls"></div></div>
+<div class="card hide" id="ct"></div>
+<a class="btn fb hide" id="fb" target="_blank" rel="noopener">👍 تابعنا على فيسبوك</a>
+<button class="btn s" id="rf">🔄 تحديث الأسعار</button>
 </main>
+<div id="ts" class="hide"></div>
+<div id="cb" class="bar hide"><button class="btn" id="cbt" style="margin:0"></button></div>
+<div id="cp" class="card panel hide">
+<h2>🛒 طلبك</h2><div id="cl"></div>
+<input id="cn" placeholder="اسمك (اختياري)" style="margin-top:8px"><input id="cnote" placeholder="ملاحظات (اختياري)">
+<div class="mut">السعر تقريبي، ويؤكد لك المحل السعر النهائي.</div>
+<button class="btn" id="sw">📲 إرسال الطلب عبر واتساب</button>
+<button class="btn s" id="co">📋 نسخ الطلب</button>
+<button class="btn s" id="cx">🗑 تفريغ السلة</button>
+<button class="btn s" id="cc2">إغلاق</button>
+</div>
 <script>
 const $=id=>document.getElementById(id);
-const ld=(k,d)=>{try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}};
-const sv=(k,v)=>{try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}};
 const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-let P=ld('prods',[['كمون',40],['كزبرة',30],['قرفة',60],['هيل',300],['زنجبيل',50],['ينسون',45],['حبة البركة',70]].map(a=>({n:a[0],p:a[1]})));
-let S=ld('shop',{n:'عيسى العطار',c:''}),L=ld('inv',[]),mode='g',O=ld('offers',[]),H=ld('sales',[]),RT=null,IM=ld('imgs',{}),IV=ld('iv',0),ci=-1;
-P.forEach(x=>{if(x.u===1||x.u===true||x.u==='1')x.u='pc'});
-const cur=()=>S.c?' '+S.c:'';
-const f2=n=>(+n).toFixed(2);
-// Tabs
-document.querySelectorAll('.tabs button').forEach(b=>b.onclick=()=>{
-  document.querySelectorAll('.tabs button').forEach(x=>x.classList.toggle('on',x===b));
-  ['sell','list','calc','inst','rep'].forEach(s=>$(s).classList.toggle('hide',s!==b.dataset.t));if(b.dataset.t==='rep')rep();
-  
-});
-function head(){$('title').textContent='🌿 '+S.n;document.title=S.n}
-// Sell
-function fillSel(){const c=$('sp').value;$('sp').innerHTML=P.map((x,i)=>'<option value="'+i+'">'+esc(x.n)+(x.o?' (نفد)':'')+'</option>').join('');if(c&&P[c])$('sp').value=c;setMode();qk();calc()}
-const isPc=()=>{const x=P[$('sp').value];return !!x&&x.u==='pc'};
-function qk(){
-  const pc=isPc(),box=$('qk');box.innerHTML='';
-  (pc?[1,2,3,6,12]:[50,100,250,500,1000]).forEach(g=>{const b=document.createElement('button');b.textContent=pc?String(g):(g>=1000?'كيلو':g);b.onclick=()=>{if(!pc){mode='g';setMode()}$('sv').value=g;calc()};box.appendChild(b)});
+const fp=n=>(+n).toFixed(2).replace(/\.00$/,'').replace(/(\.\d)0$/,'$1');
+const okUrl=u=>/^https:\/\/([a-z0-9-]+\.)*(facebook\.com|fb\.com)\//i.test(u)||/^https:\/\/fb\.me\//i.test(u);
+let D=null,off=false,cat='',openI=-1,showCart=false,tt;
+let cart=[];try{cart=JSON.parse(localStorage.getItem('cart'))||[]}catch(e){}
+const saveCart=()=>{try{localStorage.setItem('cart',JSON.stringify(cart))}catch(e){}};
+function toast(s){const t=$('ts');t.textContent=s;t.classList.remove('hide');clearTimeout(tt);tt=setTimeout(()=>t.classList.add('hide'),1800)}
+const cur=()=>D&&D.cur?' '+D.cur:'';
+const item=n=>((D&&D.items)||[]).find(i=>i.n===n);
+const price=n=>{const x=item(n);return x?+x.p:0};
+const isPc=n=>{const x=item(n);return !!x&&x.u==='pc'};
+const lineCost=l=>isPc(l.n)?(l.q||0)*price(l.n):(l.g||0)*price(l.n)/1000;
+const qtyTxt=l=>isPc(l.n)?(l.q||0)+' عبوة':(l.g||0)+' جم';
+const total=()=>cart.reduce((a,l)=>a+lineCost(l),0);
+function clean(){if(!D||!D.items)return;D.items.forEach(x=>{if(x.u===1||x.u===true||x.u==='1')x.u='pc'});for(let i=cart.length-1;i>=0;i--){const l=cart[i],x=D.items.find(k=>k.n===l.n);if(!x||x.o||(x.u==='pc'?!l.q:!l.g))cart.splice(i,1)}saveCart()}
+let IMG={};
+(function(){try{const s=JSON.parse(localStorage.getItem('img'));if(s&&s.i)IMG=ok(s.i)}catch(e){}})();
+function ok(i){const o={};for(const k in i)if(/^data:image\/jpeg;base64,[A-Za-z0-9+\/=]+$/.test(i[k]))o[k]=i[k];return o}
+async function loadImgs(){
+  if(!D||!D.imgv)return;
+  let s=null;try{s=JSON.parse(localStorage.getItem('img'))}catch(e){}
+  if(s&&s.v===D.imgv){IMG=ok(s.i||{});return}
+  try{const r=await fetch('images.json?v='+D.imgv);if(!r.ok)throw 0;const j=await r.json();IMG=ok(j.i||{});try{localStorage.setItem('img',JSON.stringify({v:D.imgv,i:IMG}))}catch(e){}}catch(e){}
 }
-function setMode(){
-  const pc=isPc();
-  document.querySelectorAll('#mode button').forEach(x=>x.classList.toggle('on',x.dataset.m===mode));
-  $('mode').style.display=pc?'none':'';
-  $('vl').textContent=pc?'العدد (عبوة)':mode==='g'?'الكمية (جرام)':'المبلغ المطلوب';
-  $('rl').textContent=pc?'السعر':mode==='g'?'السعر':'الكمية (جرام)';
-  $('rkl').textContent=pc?'سعر العبوة':'سعر الكيلو';
+async function load(){
+  try{const r=await fetch('prices.json',{cache:'no-store'});if(!r.ok)throw 0;D=await r.json();off=false;try{localStorage.setItem('d',JSON.stringify(D))}catch(e){}}
+  catch(e){try{D=JSON.parse(localStorage.getItem('d'))}catch(x){D=null}off=true}
+  clean();render();loadImgs().then(()=>{if(D&&D.items)list()});
 }
-document.querySelectorAll('#mode button').forEach(b=>b.onclick=()=>{mode=b.dataset.m;setMode();calc()});
-let cg=0,cc=0,cq=0;
-function calc(){
-  const x=P[$('sp').value],v=+$('sv').value||0;
-  if(!x){$('rk').textContent='0';$('rv').textContent='0';return}
-  if(x.u==='pc'){cq=Math.round(v);cg=0;cc=cq*x.p;$('rv').textContent=f2(cc)+cur()}
-  else{const pg=x.p/1000;cq=0;if(mode==='g'){cg=v;cc=v*pg;$('rv').textContent=f2(cc)+cur()}else{cc=v;cg=pg?v/pg:0;$('rv').textContent=Math.round(cg)+' جرام'}}
-  $('rk').textContent=f2(x.p)+cur();
+function render(){
+  const st=$('st');
+  if(!D||!Array.isArray(D.items)){$('up').textContent='';st.classList.remove('hide');st.textContent='تعذّر تحميل الأسعار، تأكد من اتصالك بالإنترنت ثم اضغط تحديث.';$('ls').innerHTML='';drawCart();return}
+  $('nm').textContent=D.name||'عيسى العطار';document.title='أسعار '+(D.name||'');
+  $('up').textContent=D.updated?'آخر تحديث: '+new Date(D.updated).toLocaleDateString('ar-EG',{day:'numeric',month:'long',year:'numeric'}):'';
+  st.classList.toggle('hide',!off);st.textContent=off?'⚠️ أنت غير متصل بالإنترنت، هذه آخر أسعار محفوظة وقد تكون قديمة.':'';
+  const of=D.offers||[];
+  $('of').innerHTML=of.length?'<div class="card"><h2>🔥 العروض</h2>'+of.map(o=>'<div class="offer"><b>'+esc(o.t||'')+'</b>'+esc(o.d||'')+'</div>').join('')+'</div>':'';
+  list();contact();drawCart();
 }
-$('sp').onchange=()=>{setMode();qk();calc()};$('sv').oninput=calc;
-$('add').onclick=()=>{const x=P[$('sp').value];if(!x)return;if(x.u==='pc'){if(!cq)return;L.push({n:x.n,g:0,c:cc,u:'pc',q:cq})}else{if(!cg)return;L.push({n:x.n,g:Math.round(cg),c:cc})}sv('inv',L);$('sv').value='';calc();inv()};
-function inv(){
-  let t=0;const h=L.map((l,i)=>{t+=l.c;return '<div><span>'+esc(l.n)+' — '+(l.u==='pc'?l.q+' عبوة':l.g+' جم')+'</span><span>'+f2(l.c)+' <button class="x" data-i="'+i+'">✕</button></span></div>'}).join('');
-  $('inv').innerHTML=(h||'<div style="color:var(--mut)">لا توجد أصناف بعد</div>')+'<div class="big"><span>الإجمالي</span><b>'+f2(t)+cur()+'</b></div>';
-  $('inv').querySelectorAll('.x').forEach(b=>b.onclick=()=>{L.splice(+b.dataset.i,1);sv('inv',L);inv()});
+function list(){
+  const cats=[...new Set(D.items.map(x=>x.c).filter(Boolean))];
+  if(cat&&!cats.includes(cat))cat='';
+  const cc=$('cc');cc.classList.toggle('hide',!cats.length);
+  cc.innerHTML=cats.length?['',...cats].map(c=>'<button data-c="'+esc(c)+'" class="'+(c===cat?'on':'')+'">'+(c||'الكل')+'</button>').join(''):'';
+  cc.querySelectorAll('button').forEach(b=>b.onclick=()=>{cat=b.dataset.c;openI=-1;list()});
+  const q=$('q').value.trim();
+  const its=D.items.map((x,i)=>({x,i})).filter(o=>(!q||String(o.x.n).includes(q))&&(!cat||(o.x.c||'')===cat));
+  const names=cats.length?[...cats,'أخرى']:[''];
+  const html=names.map(g=>{
+    const rows=its.filter(o=>cats.length?((o.x.c||'أخرى')===g):true);
+    if(!rows.length)return '';
+    return '<div class="grp">'+(g&&!cat?'<h3>'+esc(g)+'</h3>':'')+rows.map(o=>row(o.x,o.i)).join('')+'</div>'}).join('');
+  $('ls').innerHTML=html||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
+  $('ls').querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{const i=+b.dataset.o;openI=openI===i?-1:i;list()});
+  $('ls').querySelectorAll('[data-ag]').forEach(b=>b.onclick=()=>add(D.items[+b.dataset.n].n,+b.dataset.ag));
+  $('ls').querySelectorAll('[data-cg]').forEach(b=>b.onclick=()=>{const v=+$('cg').value;if(v>0)add(D.items[+b.dataset.cg].n,v);else toast('اكتب الكمية بالجرام')});
 }
-$('done').onclick=()=>{if(!L.length)return;H.push({t:new Date().toISOString(),l:L.map(x=>({n:x.n,g:x.g,c:x.c,u:x.u,q:x.q})),tot:L.reduce((a,x)=>a+x.c,0)});sv('sales',H);L=[];sv('inv',L);inv()};
-$('clr').onclick=()=>{L=[];sv('inv',L);inv()};
-$('share').onclick=async()=>{
-  if(!L.length)return;let t=0;
-  const txt=S.n+'\n'+new Date().toLocaleDateString('ar-EG')+'\n\n'+L.map(l=>{t+=l.c;return l.n+' - '+(l.u==='pc'?l.q+' عبوة':l.g+' جم')+' - '+f2(l.c)}).join('\n')+'\n\nالإجمالي: '+f2(t)+cur();
-  try{if(navigator.share)await navigator.share({text:txt});else{await navigator.clipboard.writeText(txt);alert('تم نسخ الفاتورة')}}catch(e){}
-};
-// Price list
-function plist(){
-  $('pl').innerHTML=P.map((x,i)=>'<div style="margin-bottom:14px"><div class="pr" style="margin-bottom:6px"><input value="'+esc(x.n)+'" data-i="'+i+'" data-k="n"><input type="number" inputmode="decimal" value="'+x.p+'" data-i="'+i+'" data-k="p"><button class="x" data-d="'+i+'" style="width:36px;height:42px">🗑</button></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:6px"><input list="cats" placeholder="التصنيف (مثال: بهارات)" value="'+esc(x.c||'')+'" data-i="'+i+'" data-k="c" style="font-size:15px;padding:9px"><select data-i="'+i+'" data-k="u" style="font-size:15px;padding:9px"><option value="kg"'+(x.u==='pc'?'':' selected')+'>السعر للكيلو</option><option value="pc"'+(x.u==='pc'?' selected':'')+'>السعر للعبوة</option></select></div>'
-   +(x.u==='pc'?'<div style="display:flex;gap:8px;align-items:center;margin-bottom:6px">'+(IM[x.n]?'<img src="'+IM[x.n]+'" style="width:48px;height:48px;object-fit:cover;border-radius:8px">':'')+'<button class="btn" data-img="'+i+'" style="margin:0;padding:8px;flex:1;font-size:15px">📷 '+(IM[x.n]?'تغيير الصورة':'إضافة صورة')+'</button>'+(IM[x.n]?'<button class="x" data-rimg="'+i+'" style="width:36px;height:42px">🗑</button>':'')+'</div>':'')
-   +'<label style="margin:0;display:flex;gap:6px;align-items:center"><input type="checkbox" style="width:22px;height:22px;padding:0;margin:0" '+(x.o?'checked':'')+' data-i="'+i+'" data-k="o"> نفد (غير متوفر)</label></div>').join('')+'<datalist id="cats">'+[...new Set(P.map(x=>x.c).filter(Boolean))].map(c=>'<option value="'+esc(c)+'">').join('')+'</datalist>';
-  $('pl').querySelectorAll('input,select').forEach(e=>e.onchange=()=>{const x=P[+e.dataset.i],k=e.dataset.k;if(k==='n'&&IM[x.n]!==undefined){IM[e.value]=IM[x.n];delete IM[x.n];saveIm()}x[k]=k==='p'?(+e.value||0):k==='o'?e.checked:e.value;sv('prods',P);fillSel();if(k==='u')plist()});
-  $('pl').querySelectorAll('[data-img]').forEach(b=>b.onclick=()=>{ci=+b.dataset.img;$('imf').click()});
-  $('pl').querySelectorAll('[data-rimg]').forEach(b=>b.onclick=()=>{delete IM[P[+b.dataset.rimg].n];saveIm();plist()});
-  $('pl').querySelectorAll('[data-d]').forEach(b=>b.onclick=()=>{if(confirm('حذف هذا الصنف؟')){P.splice(+b.dataset.d,1);sv('prods',P);plist();fillSel()}});
+function row(x,i){
+  const pc=x.u==='pc';
+  return '<div class="row'+(x.o?' off':'')+'">'+(pc&&IMG[x.n]?'<img class="th" src="'+IMG[x.n]+'" alt="">':'')+'<div style="flex:1"><b>'+esc(x.n)+'</b>'+(x.o?'<span class="tag">نفد</span>':'')+'<div class="mut">'+(pc?'السعر للعبوة الواحدة':'½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10))+'</div></div><div class="p">'+fp(x.p)+cur()+(pc?'<div class="mut" style="text-align:left">للعبوة</div>':'')+'</div>'+(x.o?'':'<button class="x" data-o="'+i+'">➕</button>')+'</div>'
+  +(openI===i&&!x.o?'<div class="pk"><div class="chips">'+(pc?[1,2,3,6,12]:[100,250,500,1000]).map(g=>'<button data-ag="'+g+'" data-n="'+i+'">'+(pc?g+' عبوة':g>=1000?'كيلو':g+' جم')+'</button>').join('')+'</div><div class="cb"><input id="cg" type="number" inputmode="decimal" placeholder="'+(pc?'عدد آخر من العبوات':'كمية أخرى بالجرام')+'" style="margin:0"><a class="call" data-cg="'+i+'" style="flex:0 0 80px;display:flex;align-items:center;justify-content:center">أضف</a></div></div>':'');
 }
-$('np').onclick=()=>{P.push({n:'صنف جديد',p:0});sv('prods',P);plist();fillSel()};
-$('sn').value=S.n;$('sc').value=S.c;
-$('sn').onchange=()=>{S.n=$('sn').value||'عيسى العطار';sv('shop',S);head()};
-$('sc').onchange=()=>{S.c=$('sc').value;sv('shop',S);calc();inv()};
-// Customer export
-$('fb').value=S.fb||'';
-$('fb').onchange=()=>{S.fb=$('fb').value.trim();sv('shop',S)};
-$('mp').value=S.mp||'';$('ad').value=S.ad||'';$('ph').value=S.ph||'';$('wa').value=S.wa||'';
-$('mp').onchange=()=>{S.mp=$('mp').value.trim();sv('shop',S)};
-$('ad').onchange=()=>{S.ad=$('ad').value.trim();sv('shop',S)};
-$('ph').onchange=()=>{S.ph=$('ph').value;sv('shop',S)};
-$('wa').onchange=()=>{S.wa=$('wa').value.trim();sv('shop',S)};
-function ol(){
-  $('ol').innerHTML=O.map((o,i)=>'<div style="margin-bottom:8px"><input data-o="'+i+'" data-k="t" placeholder="عنوان العرض" value="'+esc(o.t)+'" style="margin-bottom:6px"><input data-o="'+i+'" data-k="d" placeholder="تفاصيل العرض" value="'+esc(o.d)+'"><button class="btn" data-x="'+i+'" style="margin-top:6px;padding:8px">🗑 حذف العرض</button></div>').join('');
-  $('ol').querySelectorAll('input').forEach(e=>e.onchange=()=>{O[+e.dataset.o][e.dataset.k]=e.value;sv('offers',O)});
-  $('ol').querySelectorAll('[data-x]').forEach(b=>b.onclick=()=>{O.splice(+b.dataset.x,1);sv('offers',O);ol()});
+function add(n,v){v=Math.round(+v);if(!(v>0))return;const pc=isPc(n),l=cart.find(x=>x.n===n);if(l){if(pc)l.q=(l.q||0)+v;else l.g=(l.g||0)+v}else cart.push(pc?{n,q:v}:{n,g:v});saveCart();toast('✅ أُضيف '+(pc?v+' عبوة':v+' جم')+' من '+n);drawCart()}
+function drawCart(){
+  const n=cart.length;
+  $('cb').classList.toggle('hide',!n);
+  $('cbt').textContent='🛒 السلة ('+n+') — تقريباً '+fp(total())+cur();
+  if(!showCart||!n){$('cp').classList.add('hide');return}
+  $('cp').classList.remove('hide');
+  $('cl').innerHTML=cart.map((l,i)=>'<div class="row"><div><b>'+esc(l.n)+'</b><div class="mut">'+qtyTxt(l)+'</div></div><div>'+fp(lineCost(l))+cur()+' <button class="x" data-r="'+i+'">✕</button></div></div>').join('')+'<div class="row"><b>الإجمالي التقريبي</b><div class="p">'+fp(total())+cur()+'</div></div>';
+  $('cl').querySelectorAll('[data-r]').forEach(b=>b.onclick=()=>{cart.splice(+b.dataset.r,1);saveCart();drawCart()});
 }
-$('no').onclick=()=>{O.push({t:'',d:''});sv('offers',O);ol()};
-function pj(){return JSON.stringify({name:S.n,cur:S.c||'',fb:S.fb||'',wa:S.wa||'',map:S.mp||'',addr:S.ad||'',phones:(S.ph||'').split('\n').map(x=>x.trim()).filter(Boolean),updated:new Date().toISOString(),items:P.map(x=>({n:x.n,p:+x.p||0,c:x.c||'',o:!!x.o,u:x.u==='pc'?'pc':'kg'})),offers:O.filter(o=>o.t||o.d),imgv:(P.some(x=>x.u==='pc'&&IM[x.n])?IV:0)},null,1)}
-$('ex').onclick=async()=>{try{await navigator.clipboard.writeText(pj());$('exm').textContent='✅ تم النسخ. الصقه داخل ملف prices.json في GitHub ثم Commit.'}catch(e){$('exm').textContent='تعذّر النسخ، استخدم زر الحفظ كملف.'}};
-$('dl').onclick=()=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([pj()],{type:'application/json'}));a.download='prices.json';a.click();$('exm').textContent='تم حفظ prices.json في التنزيلات.'};
-ol();
-function dt(d){d=d||new Date();return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
-function rep(){
-  const d=$('rd').value||dt(),ds=H.filter(h=>dt(new Date(h.t))===d);
-  let tot=0;const m={};
-  ds.forEach(h=>{tot+=h.tot;h.l.forEach(l=>{m[l.n]=m[l.n]||{g:0,c:0,q:0,u:l.u};m[l.n].g+=l.g;m[l.n].q+=(l.q||0);m[l.n].c+=l.c})});
-  const top=Object.entries(m).sort((a,b)=>b[1].c-a[1].c);
-  RT={d,n:ds.length,tot,top};
-  $('rr').innerHTML='<div class="big"><span>إجمالي المبيعات</span><b>'+f2(tot)+cur()+'</b></div><div><span>عدد الفواتير</span><b>'+ds.length+'</b></div>'+(top.length?'<div style="color:var(--mut);padding-top:10px"><span>المبيعات حسب الصنف</span></div>'+top.map(e=>'<div><span>'+esc(e[0])+' — '+(e[1].u==='pc'?e[1].q+' عبوة':Math.round(e[1].g)+' جم')+'</span><b>'+f2(e[1].c)+'</b></div>').join(''):'<div style="color:var(--mut)">لا توجد مبيعات في هذا اليوم</div>');
+function msg(){
+  const nm=$('cn').value.trim(),nt=$('cnote').value.trim();
+  return 'طلب جديد من تطبيق '+(D.name||'')+(nm?'\nالاسم: '+nm:'')+'\n\n'+cart.map(l=>'• '+l.n+': '+qtyTxt(l)+' (≈ '+fp(lineCost(l))+')').join('\n')+'\n\nالإجمالي التقريبي: '+fp(total())+cur()+(nt?'\nملاحظات: '+nt:'');
 }
-$('rd').value=dt();$('rd').oninput=rep;rep();
-$('rc').onclick=async()=>{rep();const t=S.n+'\nتقرير مبيعات يوم '+RT.d+'\n\nعدد الفواتير: '+RT.n+'\nالإجمالي: '+f2(RT.tot)+cur()+'\n\n'+RT.top.map(e=>e[0]+' - '+(e[1].u==='pc'?e[1].q+' عبوة':Math.round(e[1].g)+' جم')+' - '+f2(e[1].c)).join('\n');try{await navigator.clipboard.writeText(t);alert('تم نسخ التقرير')}catch(e){alert('تعذّر النسخ')}};
-$('rx').onclick=()=>{if(confirm('مسح كل سجل المبيعات؟ لا يمكن التراجع.')){H=[];sv('sales',H);rep()}};
-$('bk').onclick=()=>{const b={v:1,at:new Date().toISOString(),prods:P,shop:S,offers:O,sales:H,imgs:IM,iv:IV},a=document.createElement('a');a.href=URL.createObjectURL(new Blob([JSON.stringify(b)],{type:'application/json'}));a.download='attar-backup-'+dt()+'.json';a.click();$('bm').textContent='✅ تم حفظ النسخة في التنزيلات.'};
-$('rs').onclick=()=>$('rfl').click();
-$('rfl').onchange=async()=>{const f=$('rfl').files[0];if(!f)return;try{const b=JSON.parse(await f.text());if(!Array.isArray(b.prods))throw 0;if(!confirm('سيتم استبدال بياناتك الحالية بالنسخة. متابعة؟'))return;sv('prods',b.prods);sv('shop',b.shop||S);sv('offers',b.offers||[]);sv('sales',b.sales||[]);sv('imgs',b.imgs||{});sv('iv',b.iv||0);location.reload()}catch(e){$('bm').textContent='⚠️ الملف غير صالح.'}$('rfl').value=''};
-function saveIm(){IV=Date.now();sv('imgs',IM);sv('iv',IV)}
-function shrink(file,cb){
-  const im=new Image(),u=URL.createObjectURL(file);
-  im.onload=()=>{const k=Math.min(1,180/Math.max(im.width,im.height)),w=Math.max(1,Math.round(im.width*k)),h=Math.max(1,Math.round(im.height*k)),c=document.createElement('canvas');c.width=w;c.height=h;const g=c.getContext('2d');g.fillStyle='#fff';g.fillRect(0,0,w,h);g.drawImage(im,0,0,w,h);URL.revokeObjectURL(u);cb(c.toDataURL('image/jpeg',0.6))};
-  im.onerror=()=>cb(null);im.src=u;
+function waNum(){for(const p of [D.wa,...(D.phones||[])].filter(Boolean)){const n=String(p).replace(/[^\d+]/g,'');if(n.startsWith('+'))return n.slice(1);if(n.startsWith('00'))return n.slice(2)}return ''}
+$('cbt').onclick=()=>{showCart=!showCart;drawCart()};
+$('cc2').onclick=()=>{showCart=false;drawCart()};
+$('cx').onclick=()=>{cart=[];saveCart();showCart=false;drawCart()};
+$('sw').onclick=()=>{const n=waNum();if(!n){toast('رقم الواتساب غير مضبوط، انسخ الطلب وأرسله للمحل');return}window.open('https://wa.me/'+n+'?text='+encodeURIComponent(msg()),'_blank')};
+$('co').onclick=async()=>{try{await navigator.clipboard.writeText(msg());toast('✅ تم نسخ الطلب')}catch(e){toast('تعذّر النسخ')}};
+function contact(){
+  const f=$('fb');if(okUrl(D.fb||'')){f.href=D.fb;f.classList.remove('hide')}else f.classList.add('hide');
+  const ph=(D.phones||[]).filter(Boolean),mpOk=/^https:\/\/(maps\.app\.goo\.gl|goo\.gl\/maps|www\.google\.[a-z.]+\/maps|maps\.google\.[a-z.]+|google\.[a-z.]+\/maps)/i.test(D.map||'');
+  let h='';
+  if(D.addr)h+='<div style="margin-bottom:8px">📍 '+esc(D.addr)+'</div>';
+  if(mpOk)h+='<div class="cb"><a class="mp" href="'+esc(D.map)+'" target="_blank" rel="noopener">🗺️ افتح موقع المحل على الخريطة</a></div>';
+  ph.forEach(p=>{const n=String(p).replace(/[^\d+]/g,'');if(n.length<5)return;const wa=n.startsWith('+')?n.slice(1):n.startsWith('00')?n.slice(2):'';
+    h+='<div style="margin-top:12px"><b dir="ltr" style="display:block;text-align:right">'+esc(p)+'</b><div class="cb"><a class="call" href="tel:'+n+'">📞 اتصال</a>'+(wa?'<a class="wa" href="https://wa.me/'+wa+'" target="_blank" rel="noopener">💬 واتساب</a>':'')+'</div></div>'});
+  const ct=$('ct');ct.innerHTML=h?'<h2>📍 تواصل معنا</h2>'+h:'';ct.classList.toggle('hide',!h);
 }
-$('imf').onchange=()=>{const f=$('imf').files[0];if(!f||ci<0||!P[ci])return;const nm=P[ci].n;shrink(f,d=>{if(d){IM[nm]=d;saveIm();plist()}else alert('تعذّر قراءة الصورة')});$('imf').value=''};
-$('di').onclick=()=>{const i={};P.forEach(x=>{if(x.u==='pc'&&IM[x.n])i[x.n]=IM[x.n]});const t=JSON.stringify({v:IV,i}),a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type:'application/json'}));a.download='images.json';a.click();$('exm').textContent='تم حفظ images.json ('+Math.round(t.length/1024)+' ك.ب). ارفعه إلى GitHub (Upload files) ثم انسخ بيانات الزبائن والصقها في prices.json.'};
-// Calculator
-let ex='';
-['C','⌫','%','÷','7','8','9','×','4','5','6','−','1','2','3','+','0','.','(',')'].forEach(k=>{const b=document.createElement('button');b.textContent=k;if('÷×−+'.includes(k))b.className='op';b.onclick=()=>press(k);$('keys').appendChild(b)});
-const eq=document.createElement('button');eq.textContent='=';eq.className='op';eq.style.gridColumn='span 4';eq.onclick=()=>press('=');$('keys').appendChild(eq);
-function press(k){
-  if(k==='C'){ex='';$('sub').textContent=''}else if(k==='⌫')ex=ex.slice(0,-1);
-  else if(k==='='){try{const s=ex.replace(/÷/g,'/').replace(/×/g,'*').replace(/−/g,'-').replace(/(\d+(\.\d+)?)%/g,'($1/100)');
-    if(!/^[0-9+\-*/.()\s]+$/.test(s))throw 0;const r=Function('"use strict";return ('+s+')')();if(!isFinite(r))throw 0;
-    $('sub').textContent=ex+' =';ex=String(+r.toFixed(10))}catch(e){$('sub').textContent='خطأ';ex=''}}
-  else ex+=k;$('disp').textContent=ex||'0';
-}
-// Install + offline
+$('q').oninput=()=>{if(D)list()};
+$('rf').onclick=load;
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 let dp=null;
-addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('ib').classList.remove('hide')});
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();dp=e;$('ib').classList.remove('hide');$('hint').classList.add('hide')});
 $('ib').onclick=async()=>{if(dp){dp.prompt();dp=null;$('ib').classList.add('hide')}};
-addEventListener('appinstalled',()=>{$('is').textContent='✅ تم تثبيت التطبيق'});
+addEventListener('appinstalled',()=>$('ib').classList.add('hide'));
+const ua=navigator.userAgent,std=matchMedia('(display-mode: standalone)').matches||navigator.standalone;
+const ios=/iphone|ipad|ipod/i.test(ua),inapp=/FBAN|FBAV|FB_IAB|Instagram|Line\/|MicroMessenger|Snapchat|TikTok|Twitter/i.test(ua);
+setTimeout(()=>{
+  if(std||!$('ib').classList.contains('hide'))return;
+  if(inapp&&/android/i.test(ua)){$('hint').innerHTML='⚠️ أنت تفتح الرابط داخل تطبيق آخر ولا يمكن التثبيت من هنا. اضغط الزر لفتحه في المتصفح:<a class="btn" href="intent://'+location.host+location.pathname+'#Intent;scheme=https;package=com.android.chrome;end">🌐 فتح في المتصفح</a>';$('hint').classList.remove('hide');return}
+  $('hint').textContent=inapp?'⚠️ أنت تفتح الرابط داخل تطبيق آخر (مثل فيسبوك)، ولا يمكن التثبيت من هنا. اضغط ⋮ ثم «فتح في المتصفح» أو افتح الرابط من Safari أو أي متصفح آخر.':ios?'📲 للتثبيت على iPhone: افتح الرابط في Safari، ثم اضغط زر المشاركة، ثم «إضافة إلى الشاشة الرئيسية».':'📲 لتثبيت التطبيق: اضغط ⋮ في أعلى المتصفح ثم «تثبيت التطبيق» أو «إضافة إلى الشاشة الرئيسية».';
+  $('hint').classList.remove('hide');
+},2500);
+fetch('attar.apk',{method:'HEAD'}).then(r=>{if(r.ok&&/android/i.test(ua)&&!std)$('apk').classList.remove('hide')}).catch(()=>{});
 if('serviceWorker' in navigator)addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
-head();setMode();plist();fillSel();inv();
+load();
 </script>
 </body>
 </html>
