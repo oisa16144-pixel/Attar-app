@@ -88,7 +88,7 @@ const isPc=n=>{const x=item(n);return !!x&&x.u==='pc'};
 const lineCost=l=>isPc(l.n)?(l.q||0)*price(l.n):(l.g||0)*price(l.n)/1000;
 const qtyTxt=l=>isPc(l.n)?(l.q||0)+' عبوة':(l.g||0)+' جم';
 const total=()=>cart.reduce((a,l)=>a+lineCost(l),0);
-function clean(){if(!D||!D.items)return;for(let i=cart.length-1;i>=0;i--){const l=cart[i],x=D.items.find(k=>k.n===l.n);if(!x||x.o||(x.u==='pc'?!l.q:!l.g))cart.splice(i,1)}saveCart()}
+function clean(){if(!D||!D.items)return;D.items.forEach(x=>{if(x.u===1||x.u===true||x.u==='1')x.u='pc'});for(let i=cart.length-1;i>=0;i--){const l=cart[i],x=D.items.find(k=>k.n===l.n);if(!x||x.o||(x.u==='pc'?!l.q:!l.g))cart.splice(i,1)}saveCart()}
 async function load(){
   try{const r=await fetch('prices.json',{cache:'no-store'});if(!r.ok)throw 0;D=await r.json();off=false;try{localStorage.setItem('d',JSON.stringify(D))}catch(e){}}
   catch(e){try{D=JSON.parse(localStorage.getItem('d'))}catch(x){D=null}off=true}
