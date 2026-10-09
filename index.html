@@ -45,7 +45,7 @@ input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid
 .bar{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 12px);max-width:456px;margin:0 auto;z-index:5}
 .panel{position:fixed;left:12px;right:12px;bottom:calc(env(safe-area-inset-bottom,0px) + 76px);max-width:456px;margin:0 auto;max-height:68vh;overflow:auto;box-shadow:0 8px 30px rgba(0,0,0,.4);z-index:6}
 #ts{position:fixed;top:calc(env(safe-area-inset-top,0px) + 12px);left:50%;transform:translateX(-50%);background:var(--ac);color:var(--acf);padding:10px 16px;border-radius:12px;font-weight:700;z-index:9;white-space:nowrap}
-.th{width:56px;height:56px;object-fit:cover;border-radius:10px;flex:0 0 auto}.hide{display:none}
+.th{width:56px;height:56px;object-fit:cover;border-radius:10px;flex:0 0 auto;cursor:pointer}#lb{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:20;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:16px}#lb.hide{display:none}#lbi{max-width:92vw;max-height:68vh;min-width:60vw;object-fit:contain;border-radius:14px;background:#fff}#lbc{color:#fff;font-size:18px;font-weight:700;text-align:center}.hide{display:none}
 </style>
 </head>
 <body>
@@ -61,6 +61,7 @@ input{width:100%;padding:12px;font-size:17px;border-radius:12px;border:1px solid
 <a class="btn fb hide" id="fb" target="_blank" rel="noopener">👍 تابعنا على فيسبوك</a>
 <button class="btn s" id="rf">🔄 تحديث الأسعار</button>
 </main>
+<div id="lb" class="hide"><img id="lbi" alt=""><div id="lbc"></div><div style="color:#ccc;font-size:13px">اضغط في أي مكان للإغلاق</div></div>
 <div id="ts" class="hide"></div>
 <div id="cb" class="bar hide"><button class="btn" id="cbt" style="margin:0"></button></div>
 <div id="cp" class="card panel hide">
@@ -127,13 +128,15 @@ function list(){
     if(!rows.length)return '';
     return '<div class="grp">'+(g&&!cat?'<h3>'+esc(g)+'</h3>':'')+rows.map(o=>row(o.x,o.i)).join('')+'</div>'}).join('');
   $('ls').innerHTML=html||'<div class="mut" style="padding:10px 0">لا توجد نتائج</div>';
+  $('ls').querySelectorAll('.th').forEach(im=>im.onclick=()=>openLb(im.dataset.n));
   $('ls').querySelectorAll('[data-o]').forEach(b=>b.onclick=()=>{const i=+b.dataset.o;openI=openI===i?-1:i;list()});
   $('ls').querySelectorAll('[data-ag]').forEach(b=>b.onclick=()=>add(D.items[+b.dataset.n].n,+b.dataset.ag));
   $('ls').querySelectorAll('[data-cg]').forEach(b=>b.onclick=()=>{const v=+$('cg').value;if(v>0)add(D.items[+b.dataset.cg].n,v);else toast('اكتب الكمية بالجرام')});
 }
+function openLb(n){const s=IMG[n];if(!s)return;const x=item(n);$('lbi').src=s;$('lbc').textContent=n+(x?' — '+fp(x.p)+cur()+' للعبوة':'');$('lb').classList.remove('hide')}
 function row(x,i){
   const pc=x.u==='pc';
-  return '<div class="row'+(x.o?' off':'')+'">'+(pc&&IMG[x.n]?'<img class="th" src="'+IMG[x.n]+'" alt="">':'')+'<div style="flex:1"><b>'+esc(x.n)+'</b>'+(x.o?'<span class="tag">نفد</span>':'')+'<div class="mut">'+(pc?'السعر للعبوة الواحدة':'½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10))+'</div></div><div class="p">'+fp(x.p)+cur()+(pc?'<div class="mut" style="text-align:left">للعبوة</div>':'')+'</div>'+(x.o?'':'<button class="x" data-o="'+i+'">➕</button>')+'</div>'
+  return '<div class="row'+(x.o?' off':'')+'">'+(pc&&IMG[x.n]?'<img class="th" data-n="'+esc(x.n)+'" src="'+IMG[x.n]+'" alt="">':'')+'<div style="flex:1"><b>'+esc(x.n)+'</b>'+(x.o?'<span class="tag">نفد</span>':'')+'<div class="mut">'+(pc?'السعر للعبوة الواحدة':'½ كيلو: '+fp(x.p/2)+' • ¼ كيلو: '+fp(x.p/4)+' • 100 جم: '+fp(x.p/10))+'</div></div><div class="p">'+fp(x.p)+cur()+(pc?'<div class="mut" style="text-align:left">للعبوة</div>':'')+'</div>'+(x.o?'':'<button class="x" data-o="'+i+'">➕</button>')+'</div>'
   +(openI===i&&!x.o?'<div class="pk"><div class="chips">'+(pc?[1,2,3,6,12]:[100,250,500,1000]).map(g=>'<button data-ag="'+g+'" data-n="'+i+'">'+(pc?g+' عبوة':g>=1000?'كيلو':g+' جم')+'</button>').join('')+'</div><div class="cb"><input id="cg" type="number" inputmode="decimal" placeholder="'+(pc?'عدد آخر من العبوات':'كمية أخرى بالجرام')+'" style="margin:0"><a class="call" data-cg="'+i+'" style="flex:0 0 80px;display:flex;align-items:center;justify-content:center">أضف</a></div></div>':'');
 }
 function add(n,v){v=Math.round(+v);if(!(v>0))return;const pc=isPc(n),l=cart.find(x=>x.n===n);if(l){if(pc)l.q=(l.q||0)+v;else l.g=(l.g||0)+v}else cart.push(pc?{n,q:v}:{n,g:v});saveCart();toast('✅ أُضيف '+(pc?v+' عبوة':v+' جم')+' من '+n);drawCart()}
@@ -167,6 +170,7 @@ function contact(){
   const ct=$('ct');ct.innerHTML=h?'<h2>📍 تواصل معنا</h2>'+h:'';ct.classList.toggle('hide',!h);
 }
 $('q').oninput=()=>{if(D)list()};
+$('lb').onclick=()=>$('lb').classList.add('hide');
 $('rf').onclick=load;
 document.addEventListener('visibilitychange',()=>{if(!document.hidden)load()});
 let dp=null;
